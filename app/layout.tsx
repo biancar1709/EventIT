@@ -18,9 +18,9 @@ export default function RootLayout({
       <body className="bg-black text-white">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <SidebarProvider>
-            <div className="flex w-full min-h-screen">
+            <div className="flex min-h-screen">
               <EventSidebar userRole="organizer" userName="Event Organizer" />
-              <main className="flex-1 overflow-auto bg-black">{children}</main>
+              <main className="w-full overflow-auto bg-black">{children}</main>
             </div>
           </SidebarProvider>
         </ThemeProvider>
@@ -28,7 +28,6 @@ export default function RootLayout({
     </html>
   )
 }
-
 
 
 import './globals.css'

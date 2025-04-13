@@ -1,240 +1,239 @@
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Calendar, Users, Clock, PlusCircle, ArrowRight, Edit, Trash2 } from "lucide-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Calendar, Users, DollarSign, Clock, PlusCircle } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
 
-export default function Home() {
-  const upcomingEvents = [
-    {
-      id: 1,
-      title: "Tech Workshop 2025",
-      description: "Learn the latest technologies from industry experts",
-      date: "March 15, 2025",
-      time: "10:00 AM - 4:00 PM",
-      location: "Main Campus, Building A",
-      participants: 45,
-      status: "Registration Open",
-      tasks: 8,
-      bgColor: "bg-[#074A29]/40",
-      borderColor: "border-[#1A9A32]/50",
-      iconColor: "text-[#1A9A32]",
-      buttonColor: "bg-[#1A9A32]",
-    },
-    {
-      id: 2,
-      title: "IT Career Fair",
-      description: "Connect with top employers in the tech industry",
-      date: "April 5, 2025",
-      time: "9:00 AM - 5:00 PM",
-      location: "Conference Center",
-      participants: 120,
-      status: "Planning",
-      tasks: 12,
-      bgColor: "bg-[#1A9A32]/30",
-      borderColor: "border-[#89CB81]/50",
-      iconColor: "text-[#89CB81]",
-      buttonColor: "bg-[#89CB81]",
-    },
-    {
-      id: 3,
-      title: "Hackathon Challenge",
-      description: "48 hours to build innovative solutions",
-      date: "May 10-12, 2025",
-      time: "Starts at 9:00 AM",
-      location: "Innovation Hub",
-      participants: 75,
-      status: "Registration Open",
-      tasks: 5,
-      bgColor: "bg-accent/20",
-      borderColor: "border-accent/50",
-      iconColor: "text-accent",
-      buttonColor: "bg-accent",
-    },
-  ]
-
+export default function Dashboard() {
   return (
     <div className="container mx-auto py-6 px-4">
-      {/* Header with Create Event Button */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 bg-gradient-to-r from-[#074A29] to-[#1A9A32] p-6 rounded-lg text-white">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 bg-gradient-to-r from-[#074A29] to-[#1A9A32] p-4 rounded-lg text-white">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold">Event Organizer Dashboard</h1>
-          <p className="text-sm md:text-base text-white/90 mt-2">Manage and create events for ITFest</p>
+          <h1 className="text-3xl font-bold">Dashboard</h1>
+          <p className="text-white/80">Manage your events and monitor performance</p>
         </div>
-        <Link href="/organizer/create-event">
-          <Button size="lg" className="mt-4 md:mt-0 bg-accent hover:bg-accent/90 text-black">
-            <PlusCircle className="mr-2 h-5 w-5" />
+        <Button className="mt-4 md:mt-0 bg-accent hover:bg-accent/90 text-black" asChild>
+          <Link href="/organizer/create-event">
+            <PlusCircle className="mr-2 h-4 w-4" />
             Create New Event
-          </Button>
-        </Link>
-      </div>
-
-      {/* Quick Stats */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-8">
-        <Card className="overflow-hidden border-[#1A9A32]/50 bg-black">
-          <div className="bg-[#074A29]/30 p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-sm font-medium text-[#B6E29F] mb-1">Your Events</h3>
-                <p className="text-2xl font-bold text-white">12</p>
-                <p className="text-xs text-white/80 mt-1">3 upcoming, 9 completed</p>
-              </div>
-              <div className="bg-[#1A9A32]/30 p-3 rounded-full">
-                <Calendar className="h-5 w-5 text-[#B6E29F]" />
-              </div>
-            </div>
-          </div>
-        </Card>
-        <Card className="overflow-hidden border-[#89CB81]/50 bg-black">
-          <div className="bg-[#1A9A32]/30 p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-sm font-medium text-[#89CB81] mb-1">Total Participants</h3>
-                <p className="text-2xl font-bold text-white">1,248</p>
-                <p className="text-xs text-white/80 mt-1">Across all your events</p>
-              </div>
-              <div className="bg-[#1A9A32]/30 p-3 rounded-full">
-                <Users className="h-5 w-5 text-[#89CB81]" />
-              </div>
-            </div>
-          </div>
-        </Card>
-        <Card className="overflow-hidden border-accent/50 bg-black">
-          <div className="bg-accent/20 p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <h3 className="text-sm font-medium text-accent mb-1">Next Event</h3>
-                <p className="text-2xl font-bold text-white">2 days</p>
-                <p className="text-xs text-white/80 mt-1">Tech Workshop 2025</p>
-              </div>
-              <div className="bg-accent/30 p-3 rounded-full">
-                <Clock className="h-5 w-5 text-accent" />
-              </div>
-            </div>
-          </div>
-        </Card>
-      </div>
-
-      {/* Upcoming Events Section */}
-      <div className="mb-8">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
-          <h2 className="text-xl sm:text-2xl font-bold text-[#1A9A32]">Upcoming Events</h2>
-          <Link href="/organizer/events">
-            <Button variant="outline" className="mt-2 sm:mt-0 border-[#1A9A32] text-[#1A9A32] hover:bg-[#1A9A32]/10">
-              View All Events
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
           </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {upcomingEvents.map((event) => (
-            <Card key={event.id} className={`overflow-hidden ${event.borderColor} bg-black`}>
-              <div className={`${event.bgColor}`}>
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-white">{event.title}</CardTitle>
-                      <CardDescription className="text-white/70">{event.description}</CardDescription>
-                    </div>
-                    <div className="flex space-x-2">
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-white hover:bg-white/5">
-                        <Edit className="h-4 w-4" />
-                        <span className="sr-only">Edit</span>
-                      </Button>
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0 text-white hover:bg-white/5">
-                        <Trash2 className="h-4 w-4" />
-                        <span className="sr-only">Delete</span>
-                      </Button>
-                    </div>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3">
-                    <div className="flex items-center">
-                      <Calendar className={`h-4 w-4 mr-2 ${event.iconColor}`} />
-                      <span className="text-sm text-white/90">{event.date}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Clock className={`h-4 w-4 mr-2 ${event.iconColor}`} />
-                      <span className="text-sm text-white/90">{event.time}</span>
-                    </div>
-                    <div className="flex items-center">
-                      <Users className={`h-4 w-4 mr-2 ${event.iconColor}`} />
-                      <span className="text-sm text-white/90">{event.participants} participants</span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 mt-4">
-                      <div className="text-xs bg-white/10 rounded-md p-2 text-center">
-                        <span className="block font-medium text-white">{event.tasks}</span>
-                        <span className="text-white/70">Pending Tasks</span>
-                      </div>
-                      <div className="text-xs bg-white/10 rounded-md p-2 text-center">
-                        <span className="block font-medium text-white">{event.status}</span>
-                        <span className="text-white/70">Status</span>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-                <CardFooter className="flex justify-between border-t border-white/10 pt-4">
-                  <Button className={`${event.buttonColor} hover:${event.buttonColor}/90 text-black`}>
-                    Manage Event
-                  </Button>
-                  <Button variant="outline" className="border-white/20 text-white hover:bg-white/5">
-                    View Details
-                  </Button>
-                </CardFooter>
-              </div>
-            </Card>
-          ))}
-        </div>
+        </Button>
       </div>
 
-      {/* Quick Actions */}
-      <div className="mb-8">
-        <h2 className="text-xl sm:text-2xl font-bold text-[#1A9A32] mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {[
-            {
-              title: "Manage Participants",
-              icon: Users,
-              bgColor: "bg-[#074A29]/40",
-              borderColor: "border-[#1A9A32]/50",
-              iconColor: "text-[#B6E29F]",
-            },
-            {
-              title: "Schedule Management",
-              icon: Calendar,
-              bgColor: "bg-[#1A9A32]/30",
-              borderColor: "border-[#89CB81]/50",
-              iconColor: "text-[#89CB81]",
-            },
-            {
-              title: "Budget Overview",
-              icon: Clock,
-              bgColor: "bg-[#074A29]/40",
-              borderColor: "border-[#1A9A32]/50",
-              iconColor: "text-[#B6E29F]",
-            },
-            {
-              title: "Task Management",
-              icon: Calendar,
-              bgColor: "bg-accent/20",
-              borderColor: "border-accent/50",
-              iconColor: "text-accent",
-            },
-          ].map((action, index) => (
-            <Card
-              key={index}
-              className={`overflow-hidden ${action.borderColor} bg-black hover:shadow-md hover:shadow-[#1A9A32]/20 transition-shadow`}
-            >
-              <div className={`${action.bgColor} p-6 flex flex-col items-center justify-center text-center h-full`}>
-                <action.icon className={`h-8 w-8 mb-2 ${action.iconColor}`} />
-                <h3 className="font-medium text-white">{action.title}</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <Card className="overflow-hidden bg-black border-[#1A9A32]/50">
+          <div className="bg-[#074A29]/40 text-white">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium">Total Events</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <div className="text-2xl font-bold">12</div>
+                <Calendar className="h-4 w-4 text-[#B6E29F]" />
               </div>
-            </Card>
-          ))}
-        </div>
+              <p className="text-xs text-white/80 mt-1">3 active, 9 completed</p>
+            </CardContent>
+          </div>
+        </Card>
+        <Card className="overflow-hidden bg-black border-[#89CB81]/50">
+          <div className="bg-[#1A9A32]/30 text-white">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium">Total Participants</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <div className="text-2xl font-bold">1,248</div>
+                <Users className="h-4 w-4 text-[#89CB81]" />
+              </div>
+              <p className="text-xs text-white/80 mt-1">+24% from last month</p>
+            </CardContent>
+          </div>
+        </Card>
+        <Card className="overflow-hidden bg-black border-accent/50">
+          <div className="bg-accent/20 text-white">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium">Budget Utilization</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <div className="text-2xl font-bold">78%</div>
+                <DollarSign className="h-4 w-4 text-accent" />
+              </div>
+              <p className="text-xs text-white/70 mt-1">$15,600 of $20,000</p>
+            </CardContent>
+          </div>
+        </Card>
+        <Card className="overflow-hidden bg-black border-[#1A9A32]/50">
+          <div className="bg-gradient-to-br from-[#074A29]/40 to-[#1A9A32]/30 text-white">
+            <CardHeader className="pb-2">
+              <CardTitle className="text-sm font-medium">Upcoming Events</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center justify-between">
+                <div className="text-2xl font-bold">3</div>
+                <Clock className="h-4 w-4 text-[#B6E29F]" />
+              </div>
+              <p className="text-xs text-white/80 mt-1">Next: Tech Workshop (2 days)</p>
+            </CardContent>
+          </div>
+        </Card>
       </div>
+
+      <Tabs defaultValue="upcoming" className="mb-8">
+        <TabsList className="bg-gradient-to-r from-[#074A29] to-[#1A9A32] p-1">
+          <TabsTrigger
+            value="upcoming"
+            className="text-white data-[state=active]:bg-black data-[state=active]:text-[#1A9A32]"
+          >
+            Upcoming Events
+          </TabsTrigger>
+          <TabsTrigger
+            value="active"
+            className="text-white data-[state=active]:bg-black data-[state=active]:text-[#1A9A32]"
+          >
+            Active Events
+          </TabsTrigger>
+          <TabsTrigger
+            value="past"
+            className="text-white data-[state=active]:bg-black data-[state=active]:text-[#1A9A32]"
+          >
+            Past Events
+          </TabsTrigger>
+        </TabsList>
+        <TabsContent value="upcoming" className="mt-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[
+              {
+                title: "Tech Workshop 2025",
+                date: "March 15, 2025",
+                participants: 45,
+                status: "Registration Open",
+                tasks: 8,
+                gradient: "from-[#074A29]/40 to-[#1A9A32]/30",
+                borderColor: "border-[#1A9A32]/50",
+              },
+              {
+                title: "IT Career Fair",
+                date: "April 5, 2025",
+                participants: 120,
+                status: "Planning",
+                tasks: 12,
+                gradient: "from-[#074A29]/40 to-[#1A9A32]/30",
+                borderColor: "border-[#1A9A32]/50",
+              },
+              {
+                title: "Hackathon Challenge",
+                date: "May 10-12, 2025",
+                participants: 75,
+                status: "Registration Open",
+                tasks: 5,
+                gradient: "from-[#074A29]/40 to-[#1A9A32]/30",
+                borderColor: "border-[#1A9A32]/50",
+              },
+            ].map((event, index) => (
+              <Card key={index} className={`overflow-hidden bg-black ${event.borderColor}`}>
+                <div className={`bg-gradient-to-r ${event.gradient} text-white`}>
+                  <CardHeader>
+                    <CardTitle>{event.title}</CardTitle>
+                    <CardDescription className="text-white/80">{event.date}</CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-sm text-white/80">Participants:</span>
+                        <span className="text-sm font-medium">{event.participants}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm text-white/80">Status:</span>
+                        <span className="text-sm font-medium">{event.status}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-sm text-white/80">Pending Tasks:</span>
+                        <span className="text-sm font-medium">{event.tasks}</span>
+                      </div>
+                      <Button
+                        variant="outline"
+                        className="w-full mt-2 border-white/20 text-white hover:bg-white/10"
+                        asChild
+                      >
+                        <Link href="/organizer/events">Manage Event</Link>
+                      </Button>
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </TabsContent>
+        <TabsContent value="active" className="mt-4">
+          <Card className="overflow-hidden bg-black border-[#1A9A32]/50">
+            <div className="bg-gradient-to-r from-[#1A9A32]/30 to-[#074A29]/40 text-white p-6">
+              <p>No active events at the moment.</p>
+            </div>
+          </Card>
+        </TabsContent>
+        <TabsContent value="past" className="mt-4">
+          <Card className="overflow-hidden bg-black border-[#1A9A32]/50">
+            <div className="bg-gradient-to-r from-[#074A29]/40 to-[#1A9A32]/30 text-white p-6">
+              <p>View your past events and their performance metrics.</p>
+            </div>
+          </Card>
+        </TabsContent>
+      </Tabs>
+
+      <Card className="overflow-hidden bg-black border-[#1A9A32]/50">
+        <div className="bg-gradient-to-br from-[#074A29]/40 to-[#1A9A32]/30 text-white">
+          <CardHeader>
+            <CardTitle>Pending Tasks</CardTitle>
+            <CardDescription className="text-white/80">Tasks requiring your attention</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {[
+                {
+                  title: "Finalize speaker list for Tech Workshop",
+                  dueDate: "Feb 28, 2025",
+                  priority: "High",
+                },
+                {
+                  title: "Review venue proposals for Hackathon",
+                  dueDate: "Mar 5, 2025",
+                  priority: "Medium",
+                },
+                {
+                  title: "Approve marketing materials for IT Career Fair",
+                  dueDate: "Mar 10, 2025",
+                  priority: "High",
+                },
+                {
+                  title: "Coordinate with catering service",
+                  dueDate: "Mar 15, 2025",
+                  priority: "Low",
+                },
+              ].map((task, index) => (
+                <div key={index} className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium">{task.title}</p>
+                    <p className="text-xs text-white/80">Due: {task.dueDate}</p>
+                  </div>
+                  <Badge
+                    className={
+                      task.priority === "High"
+                        ? "bg-accent text-black hover:bg-accent/90"
+                        : task.priority === "Medium"
+                          ? "bg-[#89CB81] text-black hover:bg-[#89CB81]/90"
+                          : "bg-white/20 text-white hover:bg-white/30"
+                    }
+                  >
+                    {task.priority}
+                  </Badge>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </div>
+      </Card>
     </div>
   )
 }
-

@@ -48,6 +48,7 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Custom colors
         darkGreen: "#074A29",
         lightGreen: "#B6E29F",
         mediumGreen: "#89CB81",
@@ -77,4 +78,3 @@ const config = {
 } satisfies Config
 
 export default config
-
