@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Apis_EventIT",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
